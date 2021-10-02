@@ -1,6 +1,6 @@
 # thinkpeople
 
-A new Flutter project.
+A project for the UI of the Technical Interview at ThinkPeople.
 
 ## Getting Started
 
