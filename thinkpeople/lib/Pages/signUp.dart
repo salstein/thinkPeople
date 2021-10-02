@@ -217,14 +217,22 @@ class _SignUpState extends State<SignUp> {
                     height: 150, width: 150)
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 20, left: 20),
-              child: SvgPicture.asset(
-                "assets/woman_pin.svg",
-                height: 200,
-              ),
+            Text("Welcome Onboard",
+                style: TextStyle(
+                    color: color1,
+                    letterSpacing: 5,
+                    fontWeight: FontWeight.bold)),
+                    Padding(
+              padding: const EdgeInsets.only(
+                  left: 20, right: 20, top: 10, bottom: 60),
+              child: Text("Vulputate vitae enim. Vulputa vitae enim.",
+                  textAlign: TextAlign.center,
+                  style:
+                      TextStyle(color: color2, letterSpacing: 5, fontSize: 12)),
             ),
-            textField(_nameController, "Full Name *"),
+            Flexible(child: ListView(
+              children: [
+            textField(_nameController, "Name"),
             Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: 30.0,
@@ -236,18 +244,19 @@ class _SignUpState extends State<SignUp> {
                 cursorColor: Colors.white,
                 style: TextStyle(color: color1),
                 decoration: InputDecoration(
-                  fillColor: color2,
+                  fillColor: color3,
                   filled: true,
-                  hintText: 'Email Address',
-                  hintStyle: TextStyle(color: Colors.grey, fontSize: 13),
+                  hintText: 'Email',
+                  hintStyle:
+                      TextStyle(color: color1, fontSize: 13, letterSpacing: 5),
                   errorText: invalidError ? 'Please enter a valid email' : null,
                   errorStyle: TextStyle(color: Colors.red, fontSize: 10),
                   focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
+                    borderSide: BorderSide(color: color3),
                     borderRadius: BorderRadius.circular(5),
                   ),
                   enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
+                    borderSide: BorderSide(color: color3),
                     borderRadius: BorderRadius.circular(5),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
@@ -261,28 +270,34 @@ class _SignUpState extends State<SignUp> {
                 ),
               ),
             ),
+            textField(_phoneController, "Username"),
             passwordField(),
-            textField(_phoneController, "Phone Number *"),
-            textField(_birthController, "DOB (DD/MM/YY)"),
-            textField(_CountryController, "Country/Region *"),
+           Padding( padding: const EdgeInsets.only(top: 50),),
             signUp_Button(),
-            Divider(
-              color: Colors.grey,
-              thickness: 0,
-              height: 20,
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: FlatButton(
-                onPressed: () {
-                  Get.toNamed("/signIn");
-                },
-                child: Text(
-                  'Already have an account?',
-                  style: TextStyle(color: color2),
-                ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Row(
+                children: [
+                  Spacer(),
+                  Text(
+                    'Already have an account? ',
+                    style: TextStyle(color: Colors.grey, fontSize: 12),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed("/signIn");
+                    },
+                    child: Text(
+                      'Sign In',
+                      style: TextStyle(color: color1, fontSize: 12),
+                    ),
+                  ),
+                  Spacer(),
+                ],
               ),
-            )
+            ),
+           ],
+            ))
           ],
         ),
       ),
@@ -301,16 +316,16 @@ class _SignUpState extends State<SignUp> {
         textCapitalization: TextCapitalization.words,
         style: TextStyle(color: color1),
         decoration: InputDecoration(
-          fillColor: color2,
+          fillColor: color3,
           filled: true,
           hintText: hintText,
-          hintStyle: TextStyle(color: Colors.grey, fontSize: 13),
+          hintStyle: TextStyle(color: color1, fontSize: 13, letterSpacing: 5),
           focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.black),
+            borderSide: BorderSide(color: color3),
             borderRadius: BorderRadius.circular(5),
           ),
           enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.black),
+            borderSide: BorderSide(color: color3),
             borderRadius: BorderRadius.circular(5),
           ),
         ),
@@ -330,29 +345,29 @@ class _SignUpState extends State<SignUp> {
         cursorColor: Colors.white,
         style: TextStyle(color: color1),
         decoration: InputDecoration(
-          fillColor: color2,
+          fillColor: color3,
           filled: true,
           hintText: 'Password',
-          hintStyle: TextStyle(color: Colors.grey, fontSize: 13),
+          hintStyle: TextStyle(color: color1, fontSize: 13, letterSpacing: 5),
           errorText: passwordError ? 'Weak Password! Min 6 characters' : null,
           errorStyle: TextStyle(color: color1, fontSize: 10),
           focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.black),
+            borderSide: BorderSide(color: color1),
             borderRadius: BorderRadius.circular(4),
           ),
           enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.black),
+            borderSide: BorderSide(color: color3),
             borderRadius: BorderRadius.circular(4),
           ),
           focusedErrorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.red),
+            borderSide: BorderSide(color: color3),
             borderRadius: BorderRadius.circular(5),
           ),
           errorBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.red),
             borderRadius: BorderRadius.circular(5),
           ),
-          suffixIcon: IconButton(
+          /*suffixIcon: IconButton(
             icon: Icon(
               passwordVisible ? Icons.visibility : Icons.visibility_off,
               color: passwordVisible ? HexColor("#E1A620") : Colors.grey,
@@ -362,50 +377,60 @@ class _SignUpState extends State<SignUp> {
                 passwordVisible = !passwordVisible;
               });
             },
-          ),
+          ),*/
         ),
       ),
     );
   }
 
   signUp_Button() {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-      child: FlatButton(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4.0),
-        ),
-        onPressed: (boolPass != false &&
-                boolEmail != false &&
-                boolName != false &&
-                boolCountry != false &&
-                boolBirth != false &&
-                boolPhone &&
-                boolName != false)
-            ? _submit
-            : null,
-        color: Colors.white,
-        disabledColor: Colors.grey,
-        disabledTextColor: Colors.white60,
-        textColor: Colors.black,
-        padding: EdgeInsets.all(15.0),
-        child: submitted
-            ? SizedBox(
-                height: 15,
-                width: 15,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                  valueColor:
-                      AlwaysStoppedAnimation<Color>(HexColor("#E1A620")),
-                ),
-              )
-            : Text(
-                'Sign Up',
-                style: TextStyle(
-                  fontSize: 13.0,
-                ),
+    return Padding(
+      padding: const EdgeInsets.only(right:20, left:20),
+      child: Container(
+      
+        decoration: BoxDecoration(
+          boxShadow: [
+          //background color of box
+            BoxShadow(
+              color: color3,
+              blurRadius: 1, // soften the shadow
+              spreadRadius: 0.0, //extend the shadow
+              offset: Offset(
+                8.0, // Move to right 10  horizontally
+                5.0, // Move to bottom 10 Vertically
               ),
+            )
+          ],
+        ),
+        width: double.infinity,
+      
+        child: FlatButton(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4.0),
+          ),
+          onPressed: (
+              _submit
+              ),
+          color:color1,
+          disabledColor: color1,
+          disabledTextColor: Colors.white,
+          textColor: Colors.white,
+          padding: EdgeInsets.all(15.0),
+          child: submitted
+              ? SizedBox(
+                  height: 15,
+                  width: 15,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    valueColor:
+                        AlwaysStoppedAnimation<Color>(HexColor("#E1A620")),
+                  ),
+                )
+              : Text(
+                  'Register',
+                  style: TextStyle(fontSize: 13.0, letterSpacing: 5),
+                ),
+        ),
       ),
     );
   }

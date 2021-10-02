@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
             Text("vitae", style: TextStyle(color: color2, letterSpacing: 5)),
             Padding(
                 padding: const EdgeInsets.only(top: 50),
-                child: customBtn(color1, "G E T   S T A R T E D", "/signIn")),
+                child: customBtn(color1, "G E T   S T A R T E D", "/signUp")),
           ],
         ),
       ),

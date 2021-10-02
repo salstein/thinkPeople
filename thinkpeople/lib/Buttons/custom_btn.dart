@@ -14,15 +14,15 @@ customBtn(color, text, goto) {
       decoration: BoxDecoration(
          boxShadow: [
                   BoxShadow(
-                    color: color2,
+                    color: color1,
                     offset: Offset(2.0, 2.0), //(x,y)
-                    blurRadius: 2.0,
+                    blurRadius: 10.0,
                     spreadRadius: 0.0
                   ),
                 ],
               
           color: color,
-          border: Border.all(color: Colors.white, width: 1.0),
+          border: Border.all(color:color1, width: 1.0),
           borderRadius: BorderRadius.circular(5.0)),
       margin: EdgeInsets.symmetric(
         horizontal: 24.0,

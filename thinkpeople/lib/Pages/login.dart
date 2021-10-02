@@ -192,9 +192,12 @@ class _LogInState extends State<LogIn> {
           SvgPicture.asset("assets/Mask Group.svg", height: 150, width: 150)
         ],
       ),
-      Text("Welcome Onboard",
-          style: TextStyle(
-              color: color1, letterSpacing: 5, fontWeight: FontWeight.bold)),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text("Welcome Back",
+            style: TextStyle(
+                color: color1, letterSpacing: 5, fontWeight: FontWeight.bold)),
+      ),
       Padding(
         padding: const EdgeInsets.only(right: 20, left: 20),
         child: SvgPicture.asset(
@@ -202,157 +205,192 @@ class _LogInState extends State<LogIn> {
           height: 200,
         ),
       ),
-      
-    
-       Column(children: <Widget>[
-         
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
+     Flexible(
+       child: Padding(
+         padding: const EdgeInsets.only(right:10,left:10),
+         child: ListView(
+           children: [
               Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 30.0,
-                  vertical: 5.0,
-                ),
-                child: TextField(
-                  controller: _emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  style: TextStyle(color: color1),
-                  cursorColor: Colors.white,
-                  decoration: InputDecoration(
-                    fillColor: color3,
-                    filled: true,
-                    hintText: 'Username',
-                    hintStyle: TextStyle(color: color1, fontSize: 13, letterSpacing: 5),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: color3),
-                      borderRadius: BorderRadius.circular(5),
+            padding: const EdgeInsets.only(top: 20),
+            child: Column(children: <Widget>[
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 30.0,
+                      vertical: 5.0,
                     ),
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color:color3),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 30.0,
-                  vertical: 5.0,
-                ),
-                child: TextField(
-                  onChanged: (text) {
-                    if (text.length == 0) {
-                      boolPass = false;
-                    } else
-                      boolPass = true;
-                  },
-                  controller: _passController,
-                  obscureText: !passwordVisible,
-                  style: TextStyle(color: color1),
-                  cursorColor: Colors.white,
-                  decoration: InputDecoration(
-                    fillColor: color3,
-                    filled: true,
-                    hintText: 'Password',
-                    hintStyle: TextStyle(color: color1, fontSize: 13, letterSpacing: 5),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: color3),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: color3),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        // Based on passwordVisible state choose the icon
-                        passwordVisible
-                            ? Icons.visibility
-                            : Icons.visibility_off,
-                        color: passwordVisible ? color1 : Colors.grey,
+                    child: TextField(
+                      controller: _emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      style: TextStyle(color: color1),
+                      cursorColor: Colors.white,
+                      decoration: InputDecoration(
+                        fillColor: color3,
+                        filled: true,
+                        hintText: 'Username',
+                        hintStyle: TextStyle(
+                            color: color1, fontSize: 13, letterSpacing: 5),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: color3),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: color3),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
-                      onPressed: () {
-                        // Update the state i.e. toogle the state of passwordVisible variable
-                        setState(() {
-                          passwordVisible = !passwordVisible;
-                        });
-                      },
                     ),
                   ),
-                ),
-              ),
-                GestureDetector(
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 30.0,
+                      vertical: 5.0,
+                    ),
+                    child: TextField(
+                      onChanged: (text) {
+                        if (text.length == 0) {
+                          boolPass = false;
+                        } else
+                          boolPass = true;
+                      },
+                      controller: _passController,
+                      obscureText: !passwordVisible,
+                      style: TextStyle(color: color1),
+                      cursorColor: Colors.white,
+                      decoration: InputDecoration(
+                        fillColor: color3,
+                        filled: true,
+                        hintText: 'Password',
+                        hintStyle: TextStyle(
+                            color: color1, fontSize: 13, letterSpacing: 5),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: color3),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: color3),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        /*suffixIcon: IconButton(
+                            icon: Icon(
+                              // Based on passwordVisible state choose the icon
+                              passwordVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: passwordVisible ? color1 : Colors.grey,
+                            ),
+                            onPressed: () {
+                              // Update the state i.e. toogle the state of passwordVisible variable
+                              setState(() {
+                                passwordVisible = !passwordVisible;
+                              });
+                            },
+                          ),*/
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20, bottom: 20),
+                    child: GestureDetector(
                       onTap: () {
                         Get.toNamed("/signIn");
                       },
                       child: Text(
                         "Forgot Password",
-                        style: TextStyle(color: color2, fontSize: 10),
+                        style: TextStyle(color: color2, fontSize: 12),
                       ),
                     ),
-              Container(
-                width: double.infinity,
-                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-                child: FlatButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4.0),
                   ),
-                  onPressed:
-                      (boolPass == true && boolEmail == true) ? _submit : null,
-                  color: Colors.white,
-                  disabledColor: color1,
-                  disabledTextColor: Colors.white60,
-                  textColor: Colors.black,
-                  padding: EdgeInsets.all(15.0),
-                  child: submitted
-                      ? SizedBox(
-                          height: 15,
-                          width: 15,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                            valueColor:
-                                AlwaysStoppedAnimation<Color>(Colors.black),
-                          ),
-                        )
-                      : Text(
-                          'Log in',
-                          style: TextStyle(
-                            fontSize: 13.0,
-                            letterSpacing: 5,
-                            color: Colors.white
-                          ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20, left: 20),
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: color3,
+                              blurRadius: 1, // soften the shadow
+                              spreadRadius: 0.0, //extend the shadow
+                              offset: Offset(
+                                8.0, // Move to right 10  horizontally
+                                5.0, // Move to bottom 10 Vertically
+                              ),
+                            )
+                          ],
+                          color: color1,
+                          border: Border.all(color: color3, width: 1.0),
+                          borderRadius: BorderRadius.circular(5.0)),
+                      //width: double.infinity,
+                      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                      child: FlatButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4.0),
                         ),
-                ),
-              ),
-              SizedBox(height: 8.0),
-           
-               
-                  
-                 
-                    Row(
-                      children: [Text("Don't have an account?", style: TextStyle()),
+                        onPressed: (
+                            _submit),
+                           
+                        color: color1,
+                        disabledColor: color1,
+                        disabledTextColor: Colors.white,
+                        textColor: Colors.white,
+                        padding: EdgeInsets.all(10.0),
+                        child: submitted
+                            ? SizedBox(
+                                height: 5,
+                                width: 5,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  valueColor:
+                                      AlwaysStoppedAnimation<Color>(Colors.white),
+                                ),
+                              )
+                            : Text(
+                                'Log in',
+                                style: TextStyle(
+                                    fontSize: 13.0,
+                                    letterSpacing: 5,
+                                    color: Colors.white),
+                              ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: Row(
+                      children: [
+                        Spacer(),
+                        Text("Don't have an account?",
+                            style: TextStyle(color: Colors.grey, fontSize: 12)),
                         GestureDetector(
                           onTap: () {
                             Get.toNamed("/signUp");
                           },
                           child: Text(
-                            "Sign ",
-                            style: TextStyle(color: color1, fontWeight:FontWeight.bold),
+                            " Sign ",
+                            style: TextStyle(
+                                color: color1,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12),
                           ),
                         ),
                         Text(
-                            "Up",
-                            style: TextStyle(color: color1,),
-                          ),
+                          "Up",
+                          style: TextStyle(color: color2, fontSize: 12),
+                        ),
+                        Spacer()
                       ],
                     ),
-                
-        
-            ],
+                  ),
+                ],
+              ),
+            ]),
           ),
-        ]),
-   
+           ],
+         ),
+       ),
+     )
     ])));
   }
 }
