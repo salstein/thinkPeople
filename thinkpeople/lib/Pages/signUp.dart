@@ -17,12 +17,7 @@ class _SignUpState extends State<SignUp> {
   final _nameController = TextEditingController();
   final _usernameController = TextEditingController();
   final _phoneController = TextEditingController();
-  final _birthController = TextEditingController();
-  final _CountryController = TextEditingController();
-  final _religionController = TextEditingController();
-  final _chnController = TextEditingController();
-  final _streetController = TextEditingController();
-  final _postalController = TextEditingController();
+
 
   //country and State selection results
   String countryValue = "";
@@ -36,11 +31,6 @@ class _SignUpState extends State<SignUp> {
       boolName = false,
       boolUser = false,
       boolPhone = false,
-      boolStreet = false,
-      boolPostal = false,
-      boolCHN = false,
-      boolReligion = false,
-      boolCountry = false,
       boolBirth = false,
       invalidError = false,
       passwordError = false;
@@ -58,8 +48,6 @@ class _SignUpState extends State<SignUp> {
     final name = _nameController.text.toString().trim();
     final username = _usernameController.text.toString().trim();
     final phone = _phoneController.text.toString().trim();
-    final birth = _birthController.text.toString().trim();
-    final Country = _CountryController.text.toString().trim();
   }
 
   @override
@@ -70,12 +58,6 @@ class _SignUpState extends State<SignUp> {
     _nameController.addListener(setName);
     _usernameController.addListener(setUser);
     _phoneController.addListener(setPhone);
-    _birthController.addListener(setBirth);
-    _CountryController.addListener(setCountry);
-    _religionController.addListener(setReligion);
-    _chnController.addListener(setCHN);
-    _streetController.addListener(setStreet);
-    _postalController.addListener(setPostal);
   }
 
   void setEmail() {
@@ -133,77 +115,9 @@ class _SignUpState extends State<SignUp> {
       });
   }
 
-  void setBirth() {
-    if (_birthController.text.toString().trim() == '') {
-      setState(() {
-        boolBirth = false;
-      });
-    } else
-      setState(() {
-        boolBirth = true;
-      });
-  }
 
-  void setCountry() {
-    if (_CountryController.text.toString().trim() == '') {
-      setState(() {
-        boolCountry = false;
-      });
-    } else
-      setState(() {
-        boolCountry = true;
-      });
-  }
 
-  void setReligion() {
-    if (_religionController.text.toString().trim() == '') {
-      setState(() {
-        boolReligion = false;
-      });
-    } else
-      setState(() {
-        boolReligion = true;
-      });
-  }
 
-  void setCHN() {
-    if (_chnController.text.toString().trim() == '') {
-      setState(() {
-        boolCHN = false;
-      });
-    } else
-      setState(() {
-        boolCHN = true;
-      });
-  }
-
-  void setStreet() {
-    if (_streetController.text.toString().trim() == '') {
-      setState(() {
-        boolStreet = false;
-      });
-    } else
-      setState(() {
-        boolStreet = true;
-      });
-  }
-
-  void setPostal() {
-    if (_postalController.text.toString().trim() == '') {
-      setState(() {
-        boolPostal = false;
-      });
-    } else
-      setState(() {
-        boolPostal = true;
-      });
-  }
-
-// The Nationality and state of Origin Details
-
-  String country = "";
-  String state = "";
-  String city = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
